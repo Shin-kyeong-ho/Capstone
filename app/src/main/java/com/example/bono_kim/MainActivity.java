@@ -1,7 +1,11 @@
 package com.example.bono_kim;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -17,6 +21,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -40,6 +45,31 @@ public class MainActivity extends AppCompatActivity {
     Socket socket = null;
     private TextView tv_id, tv_pass;
     static int counter = 0;
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder alBuilder = new AlertDialog.Builder(this);
+        alBuilder.setMessage("로그아웃 하시고 종료하시겠습니까?");
+
+        alBuilder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                ActivityCompat.finishAffinity(MainActivity.this);
+                System.exit(0);
+            }
+        });
+
+        alBuilder.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                return;
+            }
+        });
+        alBuilder.setTitle("프로그램 종료");
+        alBuilder.show();
+
+
+    }//뒤로가기 했을때 로그인 화면이 아니라 완전히 나가지도록
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

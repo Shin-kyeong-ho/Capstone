@@ -22,6 +22,7 @@ import java.net.URLEncoder;
 public class LoginActivity extends AppCompatActivity {
     private EditText et_id, et_pass;
     private Button btn_login, btn_register;
+    private Button no_login; //로그인 안하는 버튼
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,15 @@ public class LoginActivity extends AppCompatActivity {
         et_pass = findViewById(R.id.et_pass);
         btn_login = findViewById(R.id.btn_login);
         btn_register = findViewById(R.id.btn_register);
+        no_login = findViewById(R.id.Nologin); //로그인 안하는 버튼
+
+        no_login.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });//로그인 안하는 버튼
 
 
         // 회원가입 버튼을 클릭 시 수행
@@ -42,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
