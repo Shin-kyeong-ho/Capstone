@@ -1,8 +1,11 @@
 package com.example.bono_kim;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -18,11 +21,13 @@ import android.hardware.camera2.CameraManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -46,10 +51,20 @@ public class MainActivity extends AppCompatActivity {
     private TextView tv_id, tv_pass;
     static int counter = 0;
 
+    private BottomNavigationView bottomNavigationView;
+    private FragmentManager fm;
+    private FragmentTransaction ft;
+    private Frag1 frag1;
+    private Frag2 frag2;
+    private Frag3 frag3;
+    private Frag4 frag4;
+    private Frag5 frag5;
+
+
     @Override
     public void onBackPressed() {
         AlertDialog.Builder alBuilder = new AlertDialog.Builder(this);
-        alBuilder.setMessage("로그아웃 하시고 종료하시겠습니까?");
+        alBuilder.setMessage("로그아웃하고 종료하시겠습니까?");
 
         alBuilder.setPositiveButton("예", new DialogInterface.OnClickListener() {
             @Override
@@ -77,6 +92,38 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tv_id = findViewById(R.id.tv_id);
         tv_pass = findViewById(R.id.tv_pass);
+        bottomNavigationView = findViewById(R.id.bottomNavi);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                switch (menuItem.getItemId()){
+                    case R.id.action_ourbaby:
+                        setFrag(0);
+                        break;
+                    case R.id.action_babyinfo:
+                        setFrag(1);
+                        break;
+                    case R.id.action_babylog:
+                        setFrag(2);
+                        break;
+                    case R.id.action_babycrylog:
+                        setFrag(3);
+                        break;
+                    case R.id.action_how:
+                        setFrag(4);
+                        break;
+
+                }
+                return true;
+            }
+        });
+        frag1 = new Frag1();
+        frag2 = new Frag2();
+        frag3 = new Frag3();
+        frag4 = new Frag4();
+        frag5 = new Frag5();
+        setFrag(0);//첫 프래그먼트 화면 무엇으로 할지
 
 
         Intent intent = getIntent();
@@ -110,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
                 TimerTask tt = new TimerTask() { // 타이머를 줘서 연속적인 소켓통신을 함으로써 버튼변수 대기
                     @Override
                     public void run() {
-                        MyClientTask myClientTask = new MyClientTask("192.168.0.5", // 라즈베리파이의 ip주소로 8091포트에 ...이라는 텍스트를 보냅니다.
+                        MyClientTask myClientTask = new MyClientTask("192.168.0.2", // 라즈베리파이의 ip주소로 8091포트에 ...이라는 텍스트를 보냅니다.
                                 Integer.parseInt("8091"), "send");
                         myClientTask.execute(); // 처음 버튼 클릭했을시에 소켓통신에 연결
                     }
@@ -121,6 +168,37 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    //프래그먼트 교체 일어나는곳
+    private void setFrag(int n){
+        fm =getSupportFragmentManager();
+        ft = fm.beginTransaction();
+        switch(n) {
+            case 0:
+                ft.replace(R.id.main_frame, frag1);
+                ft.commit();
+                break;
+            case 1:
+                ft.replace(R.id.main_frame, frag2);
+                ft.commit();
+                break;
+            case 2:
+                ft.replace(R.id.main_frame, frag3);
+                ft.commit();
+                break;
+            case 3:
+                ft.replace(R.id.main_frame, frag4);
+                ft.commit();
+                break;
+            case 4:
+                ft.replace(R.id.main_frame, frag5);
+                ft.commit();
+                break;
+
+        }
+
+    }
+
     //프래시 생성
     @SuppressLint("NewApi")
     private void runFlashlight(){

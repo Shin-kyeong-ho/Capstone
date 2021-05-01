@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_ourbaby"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_baby_changing_station_24"
+        android:title="우리아이"/>
+
+    <item
+        android:id="@+id/action_babyinfo"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_filter_vintage_24"
+        android:title="육아정보"/>
+
+    <item
+        android:id="@+id/action_babylog"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_border_color_24"
+        android:title="육아기록"/>
+
+    <item
+        android:id="@+id/action_babycrylog"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_access_time_24"
+        android:title="울음시간"/>
+
+    <item
+        android:id="@+id/action_how"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_help_24"
+        android:title="앱사용법"/>
+
+
+
+</menu>
