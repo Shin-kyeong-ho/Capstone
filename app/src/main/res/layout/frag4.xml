@@ -8,7 +8,13 @@
         android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:text="아이울음시간"
-        android:textSize="40sp" />
+        android:textSize="30sp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listview"
+        />
 
 
 </LinearLayout>

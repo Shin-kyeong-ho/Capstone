@@ -23,7 +23,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,10 +43,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
+    ArrayList<String> arr = new ArrayList<String>();
     TextView recieveText;
     Button button ;
     Socket socket = null;
@@ -135,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         Dexter.withContext(this).withPermission(Manifest.permission.CAMERA).withListener(new PermissionListener() {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                //runFlashlight();
+                runFlashlight();
             }
 
             @Override
@@ -194,9 +200,19 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.main_frame, frag5);
                 ft.commit();
                 break;
-
         }
+    }
 
+    private void cringlog(){
+        ListView listView;
+        listView = findViewById(R.id.listview);
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formatnow = format.format(date);
+        arr.add(formatnow);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,arr);
+        listView.setAdapter(adapter);
     }
 
     //프래시 생성
@@ -214,7 +230,6 @@ public class MainActivity extends AppCompatActivity {
         }
         catch (CameraAccessException | InterruptedException e)
         {}
-
     }
 
     public class MyClientTask extends AsyncTask<Void, Void, Void> {
@@ -302,7 +317,8 @@ public class MainActivity extends AppCompatActivity {
                             .setDefaults(Notification.DEFAULT_SOUND)
                             .setContentText("아기가 울어요2");
                     notificationManager.notify(0, builder.build()); // 알림 생성하기
-                    //runFlashlight();
+                    runFlashlight();
+                    cringlog();
                 }
             }
         }
