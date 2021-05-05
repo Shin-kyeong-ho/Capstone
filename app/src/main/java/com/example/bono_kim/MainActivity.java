@@ -16,6 +16,8 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.os.AsyncTask;
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> arr = new ArrayList<String>();
     TextView recieveText;
     Button button ;
+    Button update_btn;
     Socket socket = null;
     private TextView tv_id, tv_pass;
     static int counter = 0;
@@ -65,6 +68,13 @@ public class MainActivity extends AppCompatActivity {
     private Frag3 frag3;
     private Frag4 frag4;
     private Frag5 frag5;
+
+    ListView listView;
+
+    DBHelper dbHelper;
+    SQLiteDatabase db = null;
+    Cursor cursor;
+    ArrayAdapter adapter;
 
 
     @Override
@@ -96,13 +106,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        listView = findViewById(R.id.listView);
+        dbHelper = new DBHelper(this, 4);
+        db = dbHelper.getWritableDatabase();    // 읽기/쓰기 모드로 데이터베이스를 오픈
+
         tv_id = findViewById(R.id.tv_id);
         tv_pass = findViewById(R.id.tv_pass);
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
                 switch (menuItem.getItemId()){
                     case R.id.action_ourbaby:
                         setFrag(0);
@@ -119,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_how:
                         setFrag(4);
                         break;
-
                 }
                 return true;
             }
@@ -141,17 +154,13 @@ public class MainActivity extends AppCompatActivity {
         Dexter.withContext(this).withPermission(Manifest.permission.CAMERA).withListener(new PermissionListener() {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                runFlashlight();
+                //runFlashlight();
             }
-
             @Override
             public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-
             }
-
             @Override
             public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-
             }
         }).check();
         recieveText = (TextView) findViewById(R.id.reciveText);
@@ -173,7 +182,64 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
+
+
+    public void listUpdate(View v) {
+        listView = findViewById(R.id.listView);
+        dbHelper = new DBHelper(this, 4);
+        db = dbHelper.getWritableDatabase();    // 읽기/쓰기 모드로 데이터베이스를 오픈
+        cursor = db.rawQuery("SELECT * FROM tableName", null);
+        startManagingCursor(cursor);    //엑티비티의 생명주기와 커서의 생명주기를 같게 한다.
+        adapter = new ArrayAdapter(this,
+                android.R.layout.simple_list_item_1);
+        while (cursor.moveToNext()) {
+            adapter.add(cursor.getString(0));
+        }
+        /*cursor.moveToFirst();
+        cursor.moveToPrevious();
+        cursor.moveToPosition(2);*/
+        listView.setAdapter(adapter);
+        //db.close();
+        // listView2.setAdapter(adapter2);
+    }
+
+
+    public void insert() {
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formatnow = format.format(date);
+        String info = "333";
+        //db.execSQL("INSERT INTO tableName VALUES ('" +  formatnow + "');");
+        db.execSQL("INSERT INTO tableName VALUES ('" + formatnow + "', '" + info + "');");
+        //db.close();
+        //db.execSQL("INSERT INTO tableName VALUES ('" +  formatnow + "'");
+        //String sql = String.format("INSERT INTO tableName VALUES('%s');",formatnow);
+        //db.execSQL(sql);
+        Toast.makeText(getApplicationContext(), "추가 성공", Toast.LENGTH_SHORT).show();
+
+        //리스트업데이트 부분 추가
+        listView = findViewById(R.id.listView);
+        dbHelper = new DBHelper(this, 4);
+        db = dbHelper.getWritableDatabase();    // 읽기/쓰기 모드로 데이터베이스를 오픈
+        cursor = db.rawQuery("SELECT * FROM tableName", null);
+        startManagingCursor(cursor);    //엑티비티의 생명주기와 커서의 생명주기를 같게 한다.
+        adapter = new ArrayAdapter(this,
+                android.R.layout.simple_list_item_1);
+        while (cursor.moveToNext()) {
+            adapter.add(cursor.getString(0));
+        }
+        /*cursor.moveToFirst();
+        cursor.moveToPrevious();
+        cursor.moveToPosition(2);*/
+        listView.setAdapter(adapter);
+        //db.close();
+        // listView2.setAdapter(adapter2);
+    }
+
 
     //프래그먼트 교체 일어나는곳
     private void setFrag(int n){
@@ -203,17 +269,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void cringlog(){
-        ListView listView;
-        listView = findViewById(R.id.listview);
-        long now = System.currentTimeMillis();
-        Date date = new Date(now);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String formatnow = format.format(date);
-        arr.add(formatnow);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,arr);
-        listView.setAdapter(adapter);
-    }
+//    private void cringlog(){
+//        ListView listView;
+//        listView = findViewById(R.id.listview);
+//        long now = System.currentTimeMillis();
+//        Date date = new Date(now);
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String formatnow = format.format(date);
+//        arr.add(formatnow);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,arr);
+//        listView.setAdapter(adapter);
+//    }
 
     //프래시 생성
     @SuppressLint("NewApi")
@@ -317,8 +383,10 @@ public class MainActivity extends AppCompatActivity {
                             .setDefaults(Notification.DEFAULT_SOUND)
                             .setContentText("아기가 울어요2");
                     notificationManager.notify(0, builder.build()); // 알림 생성하기
-                    runFlashlight();
-                    cringlog();
+                    //runFlashlight();
+                    //cringlog();
+                    insert();
+                    //listUpdate();
                 }
             }
         }
