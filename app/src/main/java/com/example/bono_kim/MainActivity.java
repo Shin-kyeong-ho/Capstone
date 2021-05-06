@@ -4,11 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.content.ClipData;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.Manifest;
@@ -24,6 +27,7 @@ import android.hardware.camera2.CameraManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -49,6 +53,7 @@ import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -58,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
     Button button ;
     Button update_btn;
     Socket socket = null;
-
 
     private TextView tv_id, tv_pass;
     static int counter = 0;
@@ -167,28 +171,24 @@ public class MainActivity extends AppCompatActivity {
             public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
             }
         }).check();
+        connet();
         recieveText = (TextView) findViewById(R.id.reciveText);
-        button = (Button)findViewById((R.id.button));
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //messageText.setText("");
-                TimerTask tt = new TimerTask() { // 타이머를 줘서 연속적인 소켓통신을 함으로써 버튼변수 대기
-                    @Override
-                    public void run() {
-                        MyClientTask myClientTask = new MyClientTask("192.168.0.2", // 라즈베리파이의 ip주소로 8091포트에 ...이라는 텍스트를 보냅니다.
-                                Integer.parseInt("8091"), "send");
-                        myClientTask.execute(); // 처음 버튼 클릭했을시에 소켓통신에 연결
-                    }
-                };
-                Timer timer = new Timer(); // 타이머 시작
-                timer.schedule(tt,0,200); // 타아머의 속도는 0.2초로 설정(버튼이 눌리는 시간)
-            }
-        });
     }
 
-
-    public void listUpdate(View v) {
+    public void connet(){
+        //messageText.setText("");
+        TimerTask tt = new TimerTask() { // 타이머를 줘서 연속적인 소켓통신을 함으로써 버튼변수 대기
+            @Override
+            public void run() {
+                MyClientTask myClientTask = new MyClientTask("192.168.0.2", // 라즈베리파이의 ip주소로 8091포트에 ...이라는 텍스트를 보냅니다.
+                        Integer.parseInt("8091"), "send");
+                myClientTask.execute(); // 처음 버튼 클릭했을시에 소켓통신에 연결
+            }
+        };
+        Timer timer = new Timer(); // 타이머 시작
+        timer.schedule(tt,0,200); // 타아머의 속도는 0.2초로 설정(버튼이 눌리는 시간)
+    }
+    public void listUpdate() {
         listView = findViewById(R.id.listView);
         dbHelper = new DBHelper(this, 4);
         db = dbHelper.getWritableDatabase();    // 읽기/쓰기 모드로 데이터베이스를 오픈
@@ -206,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
         //db.close();
         // listView2.setAdapter(adapter2);
     }
+
 
     public void insert() {
         long now = System.currentTimeMillis();
@@ -220,24 +221,6 @@ public class MainActivity extends AppCompatActivity {
         //String sql = String.format("INSERT INTO tableName VALUES('%s');",formatnow);
         //db.execSQL(sql);
         Toast.makeText(getApplicationContext(), "추가 성공", Toast.LENGTH_SHORT).show();
-
-        //리스트업데이트 부분 추가
-        listView = findViewById(R.id.listView);
-        dbHelper = new DBHelper(this, 4);
-        db = dbHelper.getWritableDatabase();    // 읽기/쓰기 모드로 데이터베이스를 오픈
-        cursor = db.rawQuery("SELECT * FROM tableName", null);
-        startManagingCursor(cursor);    //엑티비티의 생명주기와 커서의 생명주기를 같게 한다.
-        adapter = new ArrayAdapter(this,
-                android.R.layout.simple_list_item_1);
-        while (cursor.moveToNext()) {
-            adapter.add(cursor.getString(0));
-        }
-        /*cursor.moveToFirst();
-        cursor.moveToPrevious();
-        cursor.moveToPosition(2);*/
-        listView.setAdapter(adapter);
-        //db.close();
-        // listView2.setAdapter(adapter2);
     }
 
 
@@ -386,7 +369,7 @@ public class MainActivity extends AppCompatActivity {
                     //runFlashlight();
                     //cringlog();
                     insert();
-                    //listUpdate();
+                    listUpdate();
                 }
             }
         }

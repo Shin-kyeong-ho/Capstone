@@ -9,6 +9,9 @@
         android:layout_height="wrap_content"
         android:text="육아정보"
         android:textSize="40sp" />
-
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="wrap_content"
+        android:layout_height="13dp"></ListView>
 
 </LinearLayout>
