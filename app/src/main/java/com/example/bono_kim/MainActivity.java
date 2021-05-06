@@ -119,8 +119,6 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new DBHelper(this, 4);
         db = dbHelper.getWritableDatabase();    // 읽기/쓰기 모드로 데이터베이스를 오픈
 
-        tv_id = findViewById(R.id.tv_id);
-        tv_pass = findViewById(R.id.tv_pass);
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -154,11 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String userID = intent.getStringExtra("userID");
-        String userPass = intent.getStringExtra("userPass");
 
-        tv_id.setText(userID);
-        tv_pass.setText(userPass);
         Dexter.withContext(this).withPermission(Manifest.permission.CAMERA).withListener(new PermissionListener() {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
@@ -172,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }).check();
         connet();
-        recieveText = (TextView) findViewById(R.id.reciveText);
     }
 
     public void connet(){
@@ -343,9 +336,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void result) {
-            recieveText.setText(response);
+            //recieveText.setText(response);
             super.onPostExecute(result);
-            if (recieveText.getText().toString().contains("baby crying")) { //소캣서버에서 push라는 값이 들어올경우에 이벤트 생성
+            if (response.contains("baby crying")) { //소캣서버에서 push라는 값이 들어올경우에 이벤트 생성
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {//오레오 이상 버전에서는 채널을 만들어줘야 알림이 생성가능
                     int importance = NotificationManager.IMPORTANCE_HIGH;
                     String Noti_Channel_ID = "Noti";
