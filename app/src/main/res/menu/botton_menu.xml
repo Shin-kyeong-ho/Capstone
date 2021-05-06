@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_ourbaby"
         android:enabled="true"
@@ -22,7 +23,7 @@
         android:id="@+id/action_babycrylog"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_access_time_24"
-        android:title="울음시간"/>
+        android:title="울음시간" />
 
     <item
         android:id="@+id/action_how"

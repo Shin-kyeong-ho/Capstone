@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.Manifest;
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
     Button button ;
     Button update_btn;
     Socket socket = null;
+
+
     private TextView tv_id, tv_pass;
     static int counter = 0;
 
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     private Frag1 frag1;
     private Frag2 frag2;
     private Frag3 frag3;
-    private Frag4 frag4;
+    public Frag4 frag4;
     private Frag5 frag5;
 
     ListView listView;
@@ -106,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         listView = findViewById(R.id.listView);
         dbHelper = new DBHelper(this, 4);
@@ -179,11 +183,8 @@ public class MainActivity extends AppCompatActivity {
                 };
                 Timer timer = new Timer(); // 타이머 시작
                 timer.schedule(tt,0,200); // 타아머의 속도는 0.2초로 설정(버튼이 눌리는 시간)
-
             }
         });
-
-
     }
 
 
@@ -205,7 +206,6 @@ public class MainActivity extends AppCompatActivity {
         //db.close();
         // listView2.setAdapter(adapter2);
     }
-
 
     public void insert() {
         long now = System.currentTimeMillis();

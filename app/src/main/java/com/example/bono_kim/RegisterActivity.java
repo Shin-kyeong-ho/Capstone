@@ -18,8 +18,8 @@ import org.json.JSONObject;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText et_id, et_pass, et_name, et_age;
-    private Button btn_register;
+    private EditText et_id, et_pass, et_name, et_age, et_babyName;
+    private Button btn_next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { // 액티비티 시작시 처음으로 실행되는 생명주기!
@@ -32,9 +32,10 @@ public class RegisterActivity extends AppCompatActivity {
         et_name = findViewById(R.id.et_name);
         et_age = findViewById(R.id.et_age);
 
-        // 회원가입 버튼 클릭 시 수행
-        btn_register = findViewById(R.id.btn_register);
-        btn_register.setOnClickListener(new View.OnClickListener() {
+
+        // 다음 버튼 클릭 시 수행
+        btn_next = findViewById(R.id.btn_next);
+        btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // EditText에 현재 입력되어있는 값을 get(가져온다)해온다.
@@ -42,30 +43,13 @@ public class RegisterActivity extends AppCompatActivity {
                 String userPass = et_pass.getText().toString();
                 String userName = et_name.getText().toString();
                 int userAge = Integer.parseInt(et_age.getText().toString());
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
-                            if (success) { // 회원등록에 성공한 경우
-                                Toast.makeText(getApplicationContext(),"회원 등록에 성공하였습니다.",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                startActivity(intent);
-                            } else { // 회원등록에 실패한 경우
-                                Toast.makeText(getApplicationContext(),"회원 등록에 실패하였습니다.",Toast.LENGTH_SHORT).show();
-                                return;
-                            }
-                        } catch (JSONException e) {
-                             e.printStackTrace();
-                        }
 
-                    }
-                };
-                // 서버로 Volley를 이용해서 요청을 함.
-                RegisterRequest registerRequest = new RegisterRequest(userID,userPass,userName,userAge, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
-                queue.add(registerRequest);
+                Intent intent = new Intent(RegisterActivity.this, RegisterbabyActivity.class);
+                intent.putExtra("입력한 id",userID);
+                intent.putExtra("입력한 pass",userPass);
+                intent.putExtra("입력한 name",userName);
+                intent.putExtra("입력한 age",userAge);
+                startActivity(intent);
 
             }
         });

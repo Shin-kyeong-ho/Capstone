@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".RegisterbabyActivity" />
         <activity android:name=".MainActivity">
         </activity>
 
