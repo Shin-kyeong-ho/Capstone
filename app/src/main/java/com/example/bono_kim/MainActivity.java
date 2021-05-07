@@ -1,6 +1,7 @@
 package com.example.bono_kim;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
@@ -22,6 +23,8 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.os.AsyncTask;
@@ -32,6 +35,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -167,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
         }).check();
         connet();
     }
+
 
     public void connet(){
         //messageText.setText("");
@@ -354,10 +359,10 @@ public class MainActivity extends AppCompatActivity {
                             .setLargeIcon(null).setSmallIcon(R.drawable.ic_launcher_foreground)
                             .setWhen(System.currentTimeMillis()).setShowWhen(true)
                             .setAutoCancel(true).setPriority(NotificationCompat.PRIORITY_MAX)
-                            .setContentTitle("아기가 울어요1")
+                            .setContentTitle("아이의 울음소리 감지!")
                             .setDefaults(Notification.DEFAULT_VIBRATE)
                             .setDefaults(Notification.DEFAULT_SOUND)
-                            .setContentText("아기가 울어요2");
+                            .setContentText("아기가 울고있어요!");
                     notificationManager.notify(0, builder.build()); // 알림 생성하기
                     //runFlashlight();
                     //cringlog();
