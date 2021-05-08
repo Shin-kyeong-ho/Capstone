@@ -23,5 +23,8 @@
 
 
 
+## UI
+![알림1](https://user-images.githubusercontent.com/72690461/117539465-bde3ff80-b045-11eb-9b82-5041871c4d14.jpg)
+
 라즈베리파이 깃헙
 https://github.com/Shin-kyeong-ho/Capstone_Raspberrypi
