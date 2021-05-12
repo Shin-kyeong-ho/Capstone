@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
         Dexter.withContext(this).withPermission(Manifest.permission.CAMERA).withListener(new PermissionListener() {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                //runFlashlight();
+                runFlashlight(0);
             }
             @Override
             public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         TimerTask tt = new TimerTask() { // 타이머를 줘서 연속적인 소켓통신을 함으로써 버튼변수 대기
             @Override
             public void run() {
-                MyClientTask myClientTask = new MyClientTask("192.168.0.2", // 라즈베리파이의 ip주소로 8091포트에 ...이라는 텍스트를 보냅니다.
+                MyClientTask myClientTask = new MyClientTask("192.168.0.3", // 라즈베리파이의 ip주소로 8091포트에 ...이라는 텍스트를 보냅니다.
                         Integer.parseInt("8091"), "send");
                 myClientTask.execute(); // 처음 버튼 클릭했을시에 소켓통신에 연결
             }
@@ -264,19 +264,20 @@ public class MainActivity extends AppCompatActivity {
 
     //프래시 생성
     @SuppressLint("NewApi")
-    private void runFlashlight(){
-        CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
-        try {
-            String cameraId = cameraManager.getCameraIdList()[0];
-            for(int i=0;i<3;i++) {
-                cameraManager.setTorchMode(cameraId, true);
-                Thread.sleep(250);
-                cameraManager.setTorchMode(cameraId, false);
-                Thread.sleep(250);
+    private void runFlashlight(int kh_flash){
+        if(kh_flash == 1) {
+            CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+            try {
+                String cameraId = cameraManager.getCameraIdList()[0];
+                for (int i = 0; i < 3; i++) {
+                    cameraManager.setTorchMode(cameraId, true);
+                    Thread.sleep(250);
+                    cameraManager.setTorchMode(cameraId, false);
+                    Thread.sleep(250);
+                }
+            } catch (CameraAccessException | InterruptedException e) {
             }
-        }
-        catch (CameraAccessException | InterruptedException e)
-        {}
+        } else{};
     }
 
     public class MyClientTask extends AsyncTask<Void, Void, Void> {
@@ -364,8 +365,7 @@ public class MainActivity extends AppCompatActivity {
                             .setDefaults(Notification.DEFAULT_SOUND)
                             .setContentText("아기가 울고있어요!");
                     notificationManager.notify(0, builder.build()); // 알림 생성하기
-                    //runFlashlight();
-                    //cringlog();
+                    runFlashlight(1);
                     insert();
                     listUpdate();
                 }
