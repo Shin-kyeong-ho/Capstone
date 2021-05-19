@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     String memo;
     private TextView tv_id, tv_pass;
     static int counter = 0;
+    Button btn_month1; //육아기록
 
     private BottomNavigationView bottomNavigationView;
     private FragmentManager fm;
@@ -175,6 +176,8 @@ public class MainActivity extends AppCompatActivity {
         }).check();
         connet();
 
+
+
     }
 
     public void connet(){
@@ -224,6 +227,18 @@ public class MainActivity extends AppCompatActivity {
         //db.execSQL(sql);
         Toast.makeText(getApplicationContext(), "추가 성공", Toast.LENGTH_SHORT).show();
     }
+    public void month1(View v) {
+        Toast.makeText(getApplicationContext(), "이동", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this,month1.class);
+        startActivity(intent);
+    } // 육아정보 이동
+
+    public void month2(View v) {
+        Toast.makeText(getApplicationContext(), "이동", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this,month2.class);
+        startActivity(intent);
+    } // 육아정보 이동
+
 
     public void memo_insert(View v) {
         EditText edit_memo= (EditText)findViewById(R.id.edit_memo);

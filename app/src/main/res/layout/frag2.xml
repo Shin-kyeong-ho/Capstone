@@ -14,4 +14,18 @@
         android:layout_width="wrap_content"
         android:layout_height="13dp"></ListView>
 
+    <Button
+        android:id="@+id/month1"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:onClick="month1"
+        android:text="생후 1개월" />
+
+    <Button
+        android:id="@+id/month2"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:onClick="month2"
+        android:text="생후 2개월" />
+
 </LinearLayout>
