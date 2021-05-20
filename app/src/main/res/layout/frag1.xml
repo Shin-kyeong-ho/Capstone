@@ -133,7 +133,7 @@
         android:layout_marginBottom="220dp"
         android:fontFamily="@font/nanumsquareroundeb"
         android:gravity="center"
-        android:text="101"
+        android:text="115"
         android:textColor="#FF9E80"
         android:textSize="30dp" />
     <TextView
