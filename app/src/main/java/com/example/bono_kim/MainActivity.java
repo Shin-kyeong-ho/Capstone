@@ -237,6 +237,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     } // 육아정보 이동
 
+    public void month3(View v) {
+        Toast.makeText(getApplicationContext(), "이동", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this,month3.class);
+        startActivity(intent);
+    } // 육아정보 이동
+
 
     public void memo_insert(View v) {
         EditText edit_memo= (EditText)findViewById(R.id.edit_memo);

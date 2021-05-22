@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".month3">
+    tools:context=".month1">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="369dp"
+        android:layout_height="373dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="80dp"
+        android:text="생후 3개월 아이정보\n\n● 신장 여아 65.8cm 남아 67cm\n● 몸무게   여아 7.5kg 남아 7.9kg
+
+\n\n\n\n수유 정보
+\n\n◆ 수유 횟수 4~7회
+\n\n◆ 하루 평균량 : 800~1100cc"
+
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:fontFamily="@font/nanumsquareroundeb"
+        tools:layout_editor_absoluteX="128dp"
+        tools:layout_editor_absoluteY="363dp" />
+
+
+</LinearLayout>

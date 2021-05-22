@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <TextView
         android:layout_width="297dp"
         android:layout_height="wrap_content"
@@ -27,5 +26,66 @@
         android:layout_height="wrap_content"
         android:onClick="month2"
         android:text="생후 2개월" />
+
+    <Button
+        android:id="@+id/month3"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:onClick="month3"
+        android:text="생후 3개월" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:text="생후 4개월" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:text="생후 5개월" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:text="생후 6개월" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:text="생후 7개월" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:text="생후 8개월" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:text="생후 9개월" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:text="생후 10개월" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:text="생후 11개월" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:text="생후 12개월" />
 
 </LinearLayout>
