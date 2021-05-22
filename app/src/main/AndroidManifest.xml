@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bono_Kim"
         android:usesCleartextTraffic="true">
-        <activity android:name=".month2"></activity>
+        <activity android:name=".month3"></activity>
+        <activity android:name=".month2" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +25,7 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".RegisterbabyActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".month1"></activity>
+        <activity android:name=".month1" />
     </application>
 
 </manifest>

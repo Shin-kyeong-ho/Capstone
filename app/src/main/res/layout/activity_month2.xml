@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".month2">
+    tools:context=".month1">
+
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="생후 2개월"
-        tools:layout_editor_absoluteX="92dp"
-        tools:layout_editor_absoluteY="77dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/textView"
+        android:layout_width="369dp"
+        android:layout_height="373dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="80dp"
+        android:text="생후 2개월 아이정보\n\n● 신장 여아 61.3cm 남아 62.6cm\n● 몸무게  여아 6.3kg 남아 6.8kg
+
+\n\n\n\n수유 정보
+\n\n ◆ 한번 수유 량 수유 횟수 4~7회
+\n\n◆ 하루 평균량 800~1000cc"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:fontFamily="@font/nanumsquareroundeb"
+        tools:layout_editor_absoluteX="128dp"
+        tools:layout_editor_absoluteY="363dp" />
+
+
+</LinearLayout>

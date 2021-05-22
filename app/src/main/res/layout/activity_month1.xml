@@ -6,11 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".month1">
 
+
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="282dp"
-        android:text="생후 1개월 \n\n모든 아기들은 발달 과정 목표에서 숨 쉬고 울고 배설하는 단계의 백지상태이지만 곧 고개도 조금 들고 팔다리도 같이 움직이기도 하고 눈도 뜨고 초점도 맞추는 획기적인 단계에 도달하게 됩니다. 내 아이가 이런 단계들 가운데 한두 개 정도에 아직 도달하지 못할 것 같다 해도 조만간 거뜬하게 도착할 테니 전혀 걱정할 필요 없습니다. 아기들은 나름의 발달 속도를 지니고 있으므로, 조금 빨라도 조금 느려도 모두 지극히 정상입니다. 아기가 엎드린 자세로 할 수 있는 기술들은 실제로 해볼 기회가 주어져야만 완전히 익힐 수 있다는 사실도 기억하세요. 그러므로 부모가 지켜보는 가운데에서 아기를 엎드린 자세로 놀게 해야 합니다. 조기분만으로 태어난 아기들은 또래 아기들에 비해 대체로 성장이 늦으며, 주로 조정 연령(아기가 달을 다 채우고 태어났을 때 연령)에 맞추어 때로는 그보다 늦게 성장합니다. "
-        tools:layout_editor_absoluteX="168dp"
+        android:layout_width="366dp"
+        android:layout_height="432dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/nanumsquareroundeb"
+        android:text="생후 1개월 아이정보\n\n● 신장 여아 54.2cm 남아 55.2cm\n● 몸무게 여아 4.33kg  남아 4.59kg
+
+\n\n\n수유 정보
+\n\n◆ 한 번에 60~90cc 하루에 6~8회 충 수유량 700~900cc 정도를 먹게 되지만, 이것은 평균에 불과하며 많은 차이가 아이들마다 존재한다.
+\n\n◆ 수유 횟수 6~8회.
+\n\n◆ 하루 평균량 700~900cc (하루 수유량 공식 ; 150cc * 몸무게 = 하루 수유량)"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="128dp"
         tools:layout_editor_absoluteY="363dp" />
+
+
 </LinearLayout>
