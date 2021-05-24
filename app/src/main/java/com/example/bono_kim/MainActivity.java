@@ -145,9 +145,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_babycrylog:
                         setFrag(3);
                         break;
-                    case R.id.action_how:
-                        setFrag(4);
-                        break;
                 }
                 return true;
             }

@@ -18,6 +18,7 @@
 
         >
 
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="636dp"
@@ -146,39 +147,43 @@
 
             <Button
                 android:id="@+id/button31"
-                android:layout_width="match_parent"
+                android:layout_width="149dp"
                 android:layout_height="wrap_content"
                 android:text="생후 19개월" />
 
             <Button
                 android:id="@+id/button32"
-                android:layout_width="match_parent"
+                android:layout_width="149dp"
                 android:layout_height="wrap_content"
                 android:text="생후 20개월" />
 
             <Button
                 android:id="@+id/button33"
-                android:layout_width="match_parent"
+                android:layout_width="149dp"
                 android:layout_height="wrap_content"
                 android:text="생후 21개월" />
 
             <Button
                 android:id="@+id/button34"
-                android:layout_width="match_parent"
+                android:layout_width="149dp"
                 android:layout_height="wrap_content"
                 android:text="생후 22개월" />
 
             <Button
                 android:id="@+id/button35"
-                android:layout_width="match_parent"
+                android:layout_width="149dp"
                 android:layout_height="wrap_content"
                 android:text="생후 23개월" />
 
             <Button
                 android:id="@+id/button36"
-                android:layout_width="match_parent"
+                android:layout_width="149dp"
                 android:layout_height="wrap_content"
                 android:text="생후 24개월" />
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="wrap_content"
+                android:layout_height="13dp"></ListView>
 
         </LinearLayout>
     </LinearLayout>
