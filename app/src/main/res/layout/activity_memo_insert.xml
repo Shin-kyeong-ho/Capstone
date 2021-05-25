@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="297dp"
+        android:layout_height="wrap_content"
+        android:text="일기 입력"
+        android:fontFamily="@font/nanumsquareroundeb"
+        android:textSize="40sp" />
+
+
+    <EditText
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:hint="일기를 입력하세요"
+        android:textSize="18dp"
+        android:fontFamily="@font/nanumsquareroundeb"
+        android:id="@+id/edit_memo"
+        android:privateImeOptions="defaultInputmode=korean"/>
+
+    <Button
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="저장"
+        android:textSize="18dp"
+        android:fontFamily="@font/nanumsquareroundb"
+        android:id="@+id/btn_save"
+        android:onClick="memo_insert"
+        android:layout_gravity="center"
+        />
+
+
+</LinearLayout>

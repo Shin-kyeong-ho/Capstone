@@ -4,22 +4,26 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
 
+
     >
     <TextView
         android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:text="육아정보"
-        android:textSize="40sp" />
+        android:fontFamily="@font/nanumsquareroundeb"
+        android:textSize="35sp"
+        android:layout_margin="10dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="685dp"
         android:orientation="horizontal"
+        android:layout_margin="20dp"
 
         >
 
-
         <LinearLayout
+
             android:layout_width="wrap_content"
             android:layout_height="636dp"
             android:layout_margin="20dp"
@@ -31,74 +35,86 @@
                 android:layout_width="149dp"
                 android:layout_height="wrap_content"
                 android:onClick="month1"
-                android:text="생후 1개월" />
+                android:text="생후 1개월"
+                android:fontFamily="@font/nanumsquareroundeb"/>
 
             <Button
                 android:id="@+id/month2"
                 android:layout_width="149dp"
                 android:layout_height="wrap_content"
                 android:onClick="month2"
-                android:text="생후 2개월" />
+                android:text="생후 2개월"
+                android:fontFamily="@font/nanumsquareroundeb"/>
 
             <Button
                 android:id="@+id/month3"
                 android:layout_width="149dp"
                 android:layout_height="wrap_content"
                 android:onClick="month3"
-                android:text="생후 3개월" />
+                android:text="생후 3개월"
+                android:fontFamily="@font/nanumsquareroundeb"/>
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="149dp"
                 android:layout_height="wrap_content"
-                android:text="생후 4개월" />
+                android:text="생후 4개월"
+                android:fontFamily="@font/nanumsquareroundeb"/>
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="149dp"
                 android:layout_height="wrap_content"
-                android:text="생후 5개월" />
+                android:text="생후 5개월"
+                android:fontFamily="@font/nanumsquareroundeb"/>
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="149dp"
                 android:layout_height="wrap_content"
-                android:text="생후 6개월" />
+                android:text="생후 6개월"
+                android:fontFamily="@font/nanumsquareroundeb"/>
 
             <Button
                 android:id="@+id/button25"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 7개월" />
 
             <Button
                 android:id="@+id/button26"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 8개월" />
 
             <Button
                 android:id="@+id/button27"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 9개월" />
 
             <Button
                 android:id="@+id/button28"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 10개월" />
 
             <Button
                 android:id="@+id/button29"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 11개월" />
 
             <Button
                 android:id="@+id/button30"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 12개월" />
         </LinearLayout>
 
@@ -113,78 +129,96 @@
                 android:id="@+id/button5"
                 android:layout_width="149dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 13개월" />
 
             <Button
                 android:id="@+id/button6"
                 android:layout_width="149dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 14개월" />
 
             <Button
                 android:id="@+id/button7"
                 android:layout_width="149dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 15개월" />
 
             <Button
                 android:id="@+id/button8"
                 android:layout_width="149dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 16개월" />
 
             <Button
                 android:id="@+id/button9"
                 android:layout_width="149dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 17개월" />
 
             <Button
                 android:id="@+id/button10"
                 android:layout_width="149dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 18개월" />
 
             <Button
                 android:id="@+id/button31"
-                android:layout_width="149dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 19개월" />
 
             <Button
                 android:id="@+id/button32"
-                android:layout_width="149dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 20개월" />
 
             <Button
                 android:id="@+id/button33"
-                android:layout_width="149dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 21개월" />
 
             <Button
                 android:id="@+id/button34"
-                android:layout_width="149dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 22개월" />
 
             <Button
                 android:id="@+id/button35"
-                android:layout_width="149dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 23개월" />
 
             <Button
                 android:id="@+id/button36"
-                android:layout_width="149dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:text="생후 24개월" />
-            <ListView
-                android:id="@+id/listView"
-                android:layout_width="wrap_content"
-                android:layout_height="13dp"></ListView>
 
         </LinearLayout>
+        <ListView
+            android:fontFamily="@font/nanumsquareroundeb"
+            android:textSize="18dp"
+            android:id="@+id/listView_memo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+        </ListView>
     </LinearLayout>
 </LinearLayout>

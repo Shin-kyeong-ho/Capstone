@@ -8,23 +8,29 @@
         android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:text="육아기록"
-        android:textSize="40sp" />
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="wrap_content"
-        android:layout_height="13dp"></ListView>
+        android:layout_margin="10dp"
+        android:fontFamily="@font/nanumsquareroundeb"
+        android:textSize="35sp" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:text="메모를 입력하세요"
-        android:id="@+id/edit_memo"/>
+        android:hint="일기를 입력하세요"
+        android:fontFamily="@font/nanumsquareroundeb"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:id="@+id/edit_memo"
+        android:privateImeOptions="defaultInputmode=korean"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="저장"
+        android:layout_gravity="center"
+        android:fontFamily="@font/nanumsquareroundeb"
+        android:textSize="18dp"
         android:id="@+id/btn_save"
-        android:onClick="memo_insert"
+        android:onClick="save_memo"
         />
 
     <LinearLayout
@@ -33,6 +39,8 @@
         android:orientation="horizontal">
 
         <ListView
+            android:fontFamily="@font/nanumsquareroundeb"
+            android:textSize="18dp"
             android:id="@+id/listView_memo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

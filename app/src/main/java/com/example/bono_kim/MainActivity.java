@@ -240,6 +240,46 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     } // 육아정보 이동
 
+    public void memo(View v) {
+        Toast.makeText(getApplicationContext(), "이동", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this,Memo_insert.class);
+        startActivity(intent);
+    } // 일기입력 이동
+
+    public void save_memo(View v) {
+
+        EditText edit_memo= (EditText)findViewById(R.id.edit_memo);
+        memo= edit_memo.getText().toString();
+        //db.execSQL("INSERT INTO tableName VALUES ('" +  formatnow + "');");
+        db_memo.execSQL("INSERT INTO memo VALUES ('" + memo +"');");
+        listmemoUpdate();
+        //db.close();
+        //db.execSQL("INSERT INTO tableName VALUES ('" +  formatnow + "'");
+        //String sql = String.format("INSERT INTO memo VALUES('%s');",memo);
+        //db_memo.execSQL(sql);
+        Toast.makeText(getApplicationContext(), "추가 성공", Toast.LENGTH_SHORT).show();
+
+    }
+
+
+    public void listmemoUpdate() {
+        ListView listView_memo = findViewById(R.id.listView_memo);
+        dbHelper_memo = new DBHelper_memo(this, 4);
+        db_memo = dbHelper_memo.getWritableDatabase();    // 읽기/쓰기 모드로 데이터베이스를 오픈
+        Cursor cursor_memo = db_memo.rawQuery("SELECT * FROM memo", null);
+        startManagingCursor(cursor_memo);    //엑티비티의 생명주기와 커서의 생명주기를 같게 한다.
+        ArrayAdapter adapter_memo = new ArrayAdapter(this,
+                android.R.layout.simple_list_item_1);
+        while (cursor_memo.moveToNext()) {
+            adapter_memo.add(cursor_memo.getString(0));
+        }
+        /*cursor.moveToFirst();
+        cursor.moveToPrevious();
+        cursor.moveToPosition(2);*/
+        listView_memo.setAdapter(adapter_memo);
+        //db.close();
+
+    }
 
     public void memo_insert(View v) {
         EditText edit_memo= (EditText)findViewById(R.id.edit_memo);

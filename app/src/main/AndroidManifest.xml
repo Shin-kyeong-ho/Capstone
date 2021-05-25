@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bono_Kim"
         android:usesCleartextTraffic="true">
-        <activity android:name=".month3"></activity>
+        <activity android:name=".Memo_insert"></activity>
+        <activity android:name=".month3" />
         <activity android:name=".month2" />
         <activity android:name=".LoginActivity">
             <intent-filter>
